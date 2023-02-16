@@ -4,12 +4,15 @@ class Hotel{
 
     private string $_name;
     private string $_adress;
-    private int $_nbroom;
-    private int $_reservedrooms;
-    private int $_freeroom;
+    private array $_nbrooms;
+    
 
-    public function __construct($name, $adress, $nbroom, $reservedrooms, $freeroom)
+    public function __construct(string $name, string $adress, array $_nbrooms)
     {
+        $this->_name = $name;
+        $this->_adress = $adress;
+        $this->_nbrooms = [];
+
         
     }
 
