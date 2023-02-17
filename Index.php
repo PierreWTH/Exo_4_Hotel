@@ -29,11 +29,16 @@ $wietrich = new Client("Pierre", "WIETRICH");
 
 // Reservation 
 
-$reservation_murmann = new Reservation("2023-01-01", "2023-01-16", $murmann, $chambre_1_stras);
-$reservation_gibello = new Reservation("2022-06-15", "2023-06-30", $gibello, $chambre_2_paris);
+$reservation_murmann = new Reservation("01-01-2023", "16-01-2023", $murmann, $chambre_2_stras);
+$reservation_murmann2 = new Reservation("13-02-2023", "18-02-2023", $murmann, $chambre_1_stras);
+$reservation_gibello= new Reservation("12-05-2022", "16-05-2022", $gibello, $chambre_3_stras);
+
 
 // TESTS
 
-$hotel_stras-> roomStatus();
-$hotel_paris-> roomStatus();
+$hotel_stras->showInfo();
+$hotel_stras->showReservation();
+$hotel_paris->showReservation();
+$murmann->showBooking();
+$hotel_stras->roomStatus()
 ?>

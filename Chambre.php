@@ -37,6 +37,8 @@ class Chambre {
             
     }
 
+    // Conversion True en oui ou non 
+
     public function wifiStatus()
     {
         if ($this->get_wifi() == True)

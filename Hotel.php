@@ -42,16 +42,18 @@ class Hotel{
         if (count($this->_reservations) == 0)
         {   
             echo "<h3> Reservations de ".$this->_name. "</h3>" ; 
-            echo "Cet hotel aucune reservation. ";
+            echo "Cet hotel n'a aucune reservation pour le moment. ";
         }
         
         else
         {   
             echo "<h3> Reservations de ".$this->_name. "</h3>" ; 
+            echo "Nombre de réservations : " .count($this->_reservations) ."<br>";
+
             foreach ($this->_reservations as $reservation)
             {   
-                echo "Nombre de réservations : " .count($this->_reservations) ."<br>";
-                echo $reservation->get_client()->getFirstname()." ".$reservation->get_client()->getName(). " - Chambre : ".$reservation->get_room()->get_number(). " du " .$reservation->get_date_end() . " au ".$reservation->get_date_end();
+                
+                echo $reservation->get_client()->getFirstname()." ".$reservation->get_client()->getName(). " - Chambre : ".$reservation->get_room()->get_number(). " - du " .$reservation->get_date_end() . " au ".$reservation->get_date_end()."<br>";
             }
             
         }

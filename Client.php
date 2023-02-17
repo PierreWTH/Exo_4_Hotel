@@ -31,17 +31,23 @@ private array $_bookings;
         {
             echo "<h3> Reservations de ". $this->_firstname. " " .$this->_name. "</h3>" ; 
             echo "Nombre de réservations : " .count($this->_bookings) ."<br>";
+            
+            $total = 0;
+            
             foreach ($this->_bookings as $booking) 
             {
-            echo "Hotel : ".$booking->get_room()->get_hotel()->get_name(). " / Chambre : " .$booking->get_room()->get_number()." (".$booking->get_room()->get_bed(). " - " .$booking->get_room()->get_price(). "€ - Wifi : ".$booking->get_room()->get_wifi(). ") du " .$booking->get_date_start(). " au " .$booking->get_date_end();
-            }
+            echo "Hotel : ".$booking->get_room()->get_hotel()->get_name(). " / Chambre : " .$booking->get_room()->get_number()." (".$booking->get_room()->get_bed(). " - " .$booking->get_room()->get_price(). "€ - Wifi : ".$booking->get_room()->wifiStatus(). ") du " .$booking->get_date_start(). " au " .$booking->get_date_end(). "<br>";
+            
 
             $date_start = new DateTime($booking->get_date_start());
             $date_end = new DateTime($booking->get_date_end());
             $interval = $date_start->diff($date_end);
+            
+            
+            $total += $interval->d * $booking->get_room()->get_price()."€";
+            }
 
-            echo "<br> Montant : " .$interval->d * $booking->get_room()->get_price(). " €";
-
+            echo "Total : ".$total. "€";
         }
         
     }
