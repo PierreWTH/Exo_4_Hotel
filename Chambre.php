@@ -27,19 +27,17 @@ class Chambre {
     // Chaque reservation est ajoutée a une chambre
 
     public function addReservation(Reservation $reservation)
-        {
-            $this->_reservations[] = $reservation;
+    {
+        $this->_reservations[] = $reservation;
 
-        }
+    }
 
         public function __toString()
-        {
-            return $this->get_number();
-            return $this->get_bed();
+    {
+        return $this->get_number();
+        return $this->get_bed();
             
-        }
-    
-
+    }
 
 // GETTERS AND SETTERS
 

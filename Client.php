@@ -35,6 +35,13 @@ private array $_bookings;
             {
             echo "Hotel : ".$booking->get_room()->get_hotel()->get_name(). " / Chambre : " .$booking->get_room()->get_number()." (".$booking->get_room()->get_bed(). " - " .$booking->get_room()->get_price(). "€ - Wifi : ".$booking->get_room()->get_wifi(). ") du " .$booking->get_date_start(). " au " .$booking->get_date_end();
             }
+
+            $date_start = new DateTime($booking->get_date_start());
+            $date_end = new DateTime($booking->get_date_end());
+            $interval = $date_start->diff($date_end);
+
+            echo "<br> Montant : " .$interval->d * $booking->get_room()->get_price(). " €";
+
         }
         
     }

@@ -32,11 +32,8 @@ $wietrich = new Client("Pierre", "WIETRICH");
 $reservation_murmann = new Reservation("2023-01-01", "2023-01-16", $murmann, $chambre_1_stras);
 $reservation_gibello = new Reservation("2022-06-15", "2023-06-30", $gibello, $chambre_2_paris);
 
+// TESTS
 
-
-$murmann->showBooking();
-
-$hotel_stras->showInfo();
-
-
+$hotel_stras-> roomStatus();
+$hotel_paris-> roomStatus();
 ?>

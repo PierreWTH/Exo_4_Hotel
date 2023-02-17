@@ -70,10 +70,43 @@ class Hotel{
 
     }
 
-    public function __toString()
+    // Statut des chambres
+
+    public function roomStatus()
+    {   
+        echo "<h3> Statut des chambres de " .$this->_name. "</h3>" ; 
+        
+        foreach ($this->_rooms as $room)
         {
-            return $this->get_name();
+            if (count($room->get_reservations())==0)
+            {
+                $etat = "Disponible";
+            } 
+
+            else
+            {
+                $etat = "Reservée";
+            }
+
+            echo "Chambre ". $room->get_number() ." - Prix : " .$room->get_price(). "€ - Wifi : " .$room->get_wifi(). " - Etat : ".$etat."<br>";
+
+
         }
+
+    }
+
+    public function __toString()
+    {
+        return $this->get_name();
+    }
+
+
+    public function ChambreReservee()
+    {
+
+        
+
+    }
 
 
 // GETTERS AND SETTERS
