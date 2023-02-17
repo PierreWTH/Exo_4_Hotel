@@ -41,10 +41,10 @@ private array $_bookings;
 
             $date_start = new DateTime($booking->get_date_start());
             $date_end = new DateTime($booking->get_date_end());
-            $interval = $date_start->diff($date_end);
+            $interval = $date_start->diff($date_end)->format("%a");
             
             
-            $total += $interval->d * $booking->get_room()->get_price()."€";
+            $total += $interval * $booking->get_room()->get_price()."€";
             }
 
             echo "Total : ".$total. "€";
