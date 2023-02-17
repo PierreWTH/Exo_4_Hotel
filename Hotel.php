@@ -4,15 +4,54 @@ class Hotel{
 
     private string $_name;
     private string $_adress;
-    private array $_nb_rooms;
+    private array $_rooms;
+    private array $_reservations;
     
 
     public function __construct(string $name, string $adress)
     {
         $this->_name = $name;
         $this->_adress = $adress;
-        $this->_nb_rooms = [];
+        $this->_rooms = [];
+        $this->_reservations = [];
     }
+
+        
+// Methodes
+
+    // Chaque chambre qui est crée se relie a un Hotel
+
+    public function addRoom(Chambre $room)
+    {
+        $this->_rooms[] = $room;
+
+    }
+
+    // Chaque reservation est ajoutée a un Hotel
+
+    public function addReservation(Reservation $reservation)
+    {
+        $this->_reservations[] = $reservation;
+
+    }
+
+
+    public function showReservation()
+    {
+        foreach ($this->_reservations as $reservation)
+        {   
+            echo "Nombre de réservations : " .count($this->_reservations) ."<br>";
+            echo $reservation->get_client()->getFirstname()." ".$reservation->get_client()->getName(). " - Chambre : ".$reservation->get_room()->get_number(). " du " .$reservation->get_date_end() . " au ".$reservation->get_date_end();
+        }
+            
+            
+    }
+
+    public function __toString()
+        {
+            return $this->get_name();
+        }
+
 
 // GETTERS AND SETTERS
 
@@ -45,21 +84,19 @@ class Hotel{
         return $this;
     }
 
-    // Nb_rooms
+    // Rooms
 
-    public function get_nb_rooms()
+    public function getRooms()
     {
-        return $this->_nb_rooms;
+        return $this->rooms;
     }
 
-    
-    public function set_nb_rooms($_nb_rooms)
+    public function setRooms($rooms)
     {
-        $this->_nb_rooms = $_nb_rooms;
+        $this->rooms = $rooms;
 
         return $this;
     }
-
 }
 
 

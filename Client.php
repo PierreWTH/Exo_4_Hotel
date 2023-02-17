@@ -1,16 +1,44 @@
 <?php
 
 class Client{
-private string $firstname;
-private string $name;
-private array $booking;
+private string $_firstname;
+private string $_name;
+private array $_bookings;
 
     public function __construct($firstname, string $name)
     {
-        $this->firstname = $firstname;
-        $this->name = $name;
-        $this->booking = [];
+        $this->_firstname = $firstname;
+        $this->_name = $name;
+        $this->_bookings = [];
     }
+
+// METHODES
+
+    public function addBooking(Reservation $booking)
+        {
+        $this->_bookings[] = $booking;
+
+        }
+
+    public function showBooking()
+    {   if (count($this->_bookings) == 0)
+        {   
+            echo "<h3> Reservations de ". $this->_firstname. " " .$this->_name. "</h3>" ; 
+            echo "Vous n'avez pas encore de réservation.";
+        }
+
+        else
+        {
+            echo "<h3> Reservations de ". $this->_firstname. " " .$this->_name. "</h3>" ; 
+            foreach ($this->_bookings as $booking) 
+            {
+            echo "Hotel : ".$booking->get_room()->get_hotel()->get_name(). " / Chambre : " .$booking->get_room()->get_number()." (".$booking->get_room()->get_bed(). " - " .$booking->get_room()->get_price(). "€ - Wifi : ".$booking->get_room()->get_wifi(). ") du " .$booking->get_date_start(). " au " .$booking->get_date_end();
+            }
+        }
+        
+    }
+
+
 
 // GETTERS AND SETTER
 
@@ -18,12 +46,12 @@ private array $booking;
 
     public function getFirstname()
     {
-        return $this->firstname;
+        return $this->_firstname;
     }
 
     public function setFirstname($firstname)
     {
-        $this->firstname = $firstname;
+        $this->firstname = $_firstname;
 
         return $this;
     }
@@ -32,13 +60,13 @@ private array $booking;
 
     public function getName()
     {
-        return $this->name;
+        return $this->_name;
     }
 
 
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = $_name;
 
         return $this;
     }

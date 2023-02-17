@@ -1,22 +1,45 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 class Chambre {
 
     private string $_number;
     private string $_price;
     private string $_wifi;
-    private string $bed;
+    private string $_bed;
     private Hotel $_hotel;
-    private array $_reservation;
+    private array $_reservations;
 
     public function __construct(int $number, int $price, string $wifi, $bed, Hotel $hotel)
     {
         $this->_number = $number;
         $this->_price = $price;
         $this->_wifi = $wifi;
+        $this->_bed = $bed;
+        $this->_reservations = [];
         $this->_hotel = $hotel;  
-        $this->_reservation = [];
+        $hotel->addRoom($this);
     }
+
+// Methodes
+
+    // Chaque reservation est ajoutée a une chambre
+
+    public function addReservation(Reservation $reservation)
+        {
+            $this->_reservations[] = $reservation;
+
+        }
+
+        public function __toString()
+        {
+            return $this->get_number();
+            return $this->get_bed();
+            
+        }
+    
+
 
 // GETTERS AND SETTERS
 
@@ -63,15 +86,15 @@ class Chambre {
     }
 
     // Bed
-    
-    public function getBed()
+
+    public function get_bed()
     {
-        return $this->bed;
+        return $this->_bed;
     }
-  
-    public function setBed($bed)
+
+    public function set_bed($_bed)
     {
-        $this->bed = $bed;
+        $this->_bed = $_bed;
 
         return $this;
     }
@@ -92,19 +115,22 @@ class Chambre {
 
     // Reservation
 
-    public function get_reservation()
+    public function get_reservations()
     {
-        return $this->_reservation;
+        return $this->_reservations;
     }
 
-    public function set_reservation($_reservation)
+    public function set_reservations($_reservations)
     {
-        $this->_reservation = $_reservation;
+        $this->_reservation = $_reservations;
 
         return $this;
     }
 
 
+
+   
+    
 }
 
 ?>

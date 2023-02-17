@@ -12,8 +12,19 @@ private Chambre $_room;
         $this->_date_start= $date_start;
         $this->_date_end= $date_end;
         $this->_client = $client;
+        $client->addBooking($this);
         $this->_room =$room;
+        $room->addReservation($this);
+        $this->_room->get_hotel()->addReservation($this);
     }
+
+// METHODES
+
+
+
+
+
+
 
 // GETTERS AND SETTERS
 
