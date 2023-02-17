@@ -13,11 +13,13 @@ $hotel_paris = new Hotel("Regent **** Paris", "61 Rue Dauphine, 75010 Paris");
 
 // Chambres
 
-$chambre_1_stras = new Chambre(1, 120, "Oui", "2 lits", $hotel_stras);
-$chambre_2_stras = new Chambre(2, 300, "Non", "2 lits", $hotel_stras);
+$chambre_1_stras = new Chambre(1, 120, "Non", "2 lits", $hotel_stras);
+$chambre_2_stras = new Chambre(2, 120, "Non", "2 lits", $hotel_stras);
+$chambre_3_stras = new Chambre(3, 300, "Oui", "2 lits", $hotel_stras);
+$chambre_4_stras = new Chambre(4, 300, "Oui", "2 lits", $hotel_stras);
 
-$chambre_1_paris = new Chambre(3, 120, "Oui", "2 lits", $hotel_paris);
-$chambre_2_paris = new Chambre(4, 300, "Non", "2 lits", $hotel_paris);
+$chambre_1_paris = new Chambre(1, 120, "Oui", "2 lits", $hotel_paris);
+$chambre_2_paris = new Chambre(2, 300, "Non", "2 lits", $hotel_paris);
 
 // Client
 
@@ -32,7 +34,9 @@ $reservation_gibello = new Reservation("2022-06-15", "2023-06-30", $gibello, $ch
 
 
 
-$hotel_paris->showReservation();
+$murmann->showBooking();
+
+$hotel_stras->showInfo();
 
 
 ?>

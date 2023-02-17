@@ -35,16 +35,39 @@ class Hotel{
 
     }
 
+    // Affiche les reservations de l'hotel selectionné 
 
     public function showReservation()
     {
-        foreach ($this->_reservations as $reservation)
+        if (count($this->_reservations) == 0)
         {   
-            echo "Nombre de réservations : " .count($this->_reservations) ."<br>";
-            echo $reservation->get_client()->getFirstname()." ".$reservation->get_client()->getName(). " - Chambre : ".$reservation->get_room()->get_number(). " du " .$reservation->get_date_end() . " au ".$reservation->get_date_end();
+            echo "<h3> Reservations de ".$this->_name. "</h3>" ; 
+            echo "Cet hotel aucune reservation. ";
         }
+        
+        else
+        {   
+            echo "<h3> Reservations de ".$this->_name. "</h3>" ; 
+            foreach ($this->_reservations as $reservation)
+            {   
+                echo "Nombre de réservations : " .count($this->_reservations) ."<br>";
+                echo $reservation->get_client()->getFirstname()." ".$reservation->get_client()->getName(). " - Chambre : ".$reservation->get_room()->get_number(). " du " .$reservation->get_date_end() . " au ".$reservation->get_date_end();
+            }
             
-            
+        }
+    }
+
+    public function showInfo()
+    {
+        echo "<h3>" .$this->_name. "</h3>" ; 
+        echo $this->_adress."<br><br>";
+        echo "Nombre de chambres : ".count($this->_rooms)."<br>";
+        echo "Nombre de chambres reservées : ".count($this->_reservations)."<br>";
+        $free_rooms = count($this->_rooms) - count($this->_reservations);
+        echo "Nombre de chambres disponibles : ".$free_rooms;
+
+
+
     }
 
     public function __toString()
