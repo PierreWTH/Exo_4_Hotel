@@ -79,6 +79,7 @@ class Hotel{
         foreach ($this->_rooms as $room)
         {
             if (count($room->get_reservations())==0)
+                
             {
                 $etat = "Disponible";
             } 
@@ -88,7 +89,7 @@ class Hotel{
                 $etat = "Reservée";
             }
 
-            echo "Chambre ". $room->get_number() ." - Prix : " .$room->get_price(). "€ - Wifi : " .$room->get_wifi(). " - Etat : ".$etat."<br>";
+            echo "Chambre ". $room->get_number() ." - Prix : " .$room->get_price(). "€ - Wifi : " .$room->wifiStatus(). " - Etat : ".$etat."<br>";
 
 
         }

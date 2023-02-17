@@ -1,12 +1,10 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
 class Chambre {
 
-    private string $_number;
-    private string $_price;
-    private string $_wifi;
+    private int $_number;
+    private float $_price;
+    private bool $_wifi;
     private string $_bed;
     private Hotel $_hotel;
     private array $_reservations;
@@ -32,11 +30,25 @@ class Chambre {
 
     }
 
-        public function __toString()
+    public function __toString()
     {
         return $this->get_number();
         return $this->get_bed();
             
+    }
+
+    public function wifiStatus()
+    {
+        if ($this->get_wifi() == True)
+        {
+            return $wifistatus = "Oui";
+                
+        }
+        else 
+        {
+            return $wifistatus = "Non";
+        } 
+                
     }
 
 // GETTERS AND SETTERS
